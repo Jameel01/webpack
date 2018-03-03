@@ -98,14 +98,8 @@ module.exports = {
                             outputPath:config.imgOutputPath
                         }
                     },
-                    //加载字体
-                    {  test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-                        loader: 'url-loader',
-                        options: {
-                            limit: 10000,
-                            name: path.posix.join('assets', 'fonts/[name].[hash:7].[ext]')
-                        }
-                    },
+                    
+                    {  test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,use:["file-loader"]},//加载字体
                     { test:/\.(csv|tsv)$/,use:['csv-loader']},//加载数据
                     { test:/\.xml$/,use:['xml-loader']},//加载数据
                     { test:/\.(js|jsx)$/, exclude: /node_modules/, loader: "babel-loader" },//babel编译
